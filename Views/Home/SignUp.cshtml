@@ -1,0 +1,139 @@
+﻿@model EzyLiveWebsiteMain.Models.Login.Login
+
+
+
+
+@using (Html.BeginForm("SignUp", "Home", FormMethod.Post, new { @class = "form" }))
+
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <style>
+            * {
+                box-sizing: border-box;
+                font-family: 'poppins', sans-serif;
+            }
+
+            body {
+                background:  @Url.Content("~/PImg/Background_1.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0;
+                padding: 0;
+                height: 100vh;
+            }
+
+            .form {
+                width: 500px;
+                background-color: #eeeeee;
+                padding: 0 30px;
+                display: grid;
+                padding-bottom: 30px;
+                border-radius: 5px;
+                box-shadow: 0 0 100px black;
+            }
+
+            input {
+                Width: 100%;
+                padding: 10px;
+                margin: 10px 0;
+                border: none;
+                border-radius: 15px;
+                box-shadow: 0 0 10px black;
+            }
+
+            .otpverify {
+                width: 100%;
+                display: flex;
+                gap: 20px;
+                border: none;
+                display: none;
+            }
+
+            .btnn {
+                /* border-radius: 15px; */
+                padding: 10px;
+                /* box-shadow: 8px 2px 1px black; */
+                background-color: #82eec1;
+                outline: none;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+                width: 150px;
+            }
+
+            .btn-grp {
+                margin-top: 10px;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .register-link {
+                font-size: 14px;
+                text-align: center;
+                margin: 20px 0 15px;
+            }
+
+                .register-link p a {
+                    /* color: #fff; */
+                    text-decoration: none;
+                    font-weight: 600;
+                }
+
+                .register-link a {
+                    margin-left: 5px;
+                }
+
+                    .register-link a:hover {
+                        text-decoration: underline;
+                    }
+        </style>
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <h1>Registration</h1>
+            <div class="input-box">
+                @Html.TextBoxFor(model => model.Username, new { placeholder = "Username" })
+                @Html.ValidationMessageFor(model => model.Username)
+            </div>
+            <div class="input-box">
+                @Html.PasswordFor(model => model.Password, new { placeholder = "Password" })
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+            <div class="input-box">
+                @Html.PasswordFor(model => model.ConfirmPassword, new { placeholder = "Re-enter Password" })
+                @Html.ValidationMessageFor(model => model.ConfirmPassword)
+            </div>
+            <div class="input-box">
+                @Html.TextBoxFor(model => model.Email, new { placeholder = "Email" })
+                @Html.ValidationMessageFor(model => model.Email);
+            </div>
+
+            <div class="btn-grp">
+
+                <input type="submit" value="Register" class="btnn" />
+
+            </div>
+            @Html.Raw(ViewBag.Registered)
+            <div class="register-link">
+                <p>
+                    Already Registered? <a href="@Url.Action("SignIn","Home")">Login</a>
+                </p>
+            </div>
+            <a href="~/Views/Home/SignUp.cshtml">~/Views/Home/SignUp.cshtml</a>
+        </div>
+    </body>
+    <script src="~/js/registration.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+</html>
+}
+

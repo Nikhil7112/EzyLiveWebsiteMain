@@ -1,0 +1,46 @@
+﻿@model IEnumerable<EzyLiveWebsiteMain.Models.Review.Review>
+
+@{
+    ViewBag.Title = "ViewReview";
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table" , border="1" >
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.opinion)
+        </th>
+        <th></th>
+    </tr>
+
+
+
+  
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @item.date.ToString("yyyy-MM-dd")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.opinion)
+            </td>
+            <td>
+               
+                @Html.ActionLink("Delete", "Deletereview", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

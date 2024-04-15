@@ -1,0 +1,145 @@
+﻿@model EzyLiveWebsiteMain.Models.Login.Login
+
+
+
+
+
+@using (Html.BeginForm("SignIn", "Home", FormMethod.Post, new { @class = "form" }))
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <style>
+                        * {
+                            margin: 0;
+                            padding: 0;
+                            box-sizing: border-box;
+                            font-family: "poppins", sans-serif;
+                        }
+
+                        body {
+                            background:@Url.Content("~/PImg/Background_2.jpg");
+                            background -repeat: no-repeat;
+                                background-size: cover;
+                                text-align: center;
+                            display: flex;
+                                align-items: center;
+                                justify-content: center;
+                            margin: 0;
+                            padding: 0;
+                            height: 100vh;
+                            }
+
+                        .form {
+                            width: 500px;
+                                background-color: #eeeeee;
+                            padding: 0 30px;
+                            display: grid;
+                                padding-bottom: 30px;
+                                border-radius: 5px;
+                                box-shadow: 0 0 100px black;
+                            }
+
+                        .input {
+                            Width: 100%;
+                            padding: 10px;
+                            margin: 10px 0;
+                            border: none;
+                                border-radius: 15px;
+                                box-shadow: 0 0 10px black;
+                            }
+
+                        .btnn {
+                            /* border-radius: 15px; */
+                            padding: 10px;
+                                /* box-shadow: 8px 2px 1px black; */
+                                background-color: #82eec1;
+                            outline: none;
+                            border: none;
+                            cursor: pointer;
+                                border-radius: 5px;
+                            width: 150px;
+                            }
+
+                        .remember-forgot {
+                                margin-top: 10px;
+                                margin-bottom: 10px;
+                            display: flex;
+                                justify-content: space-between;
+                                font-size: 14.5px;
+                                /* margin: 0 15px; */
+                            }
+
+                            .remember-forgot label input {
+                                accent-color: #fff;
+                                margin-right: 3px;
+                            }
+
+                            .remember-forgot a {
+                                /* color: #fff; */
+                                text-decoration: none;
+                            }
+
+                                .remember-forgot a:hover {
+                                text-decoration: underline;
+                            }
+
+                        /* .btn {
+              width: 100%;
+              height: 45px;
+              background: #fff;
+              border: none;
+              outline: none;
+              border-radius: 40px;
+              box-shadow: 0 0 10px rgba(0, 0, 0-1);
+              font-size: 16px;
+              color: #333;
+              font-weight: 600;
+            } */
+
+                        .register-link {
+                                font-size: 14px;
+                                text-align: center;
+                            margin: 20px 0 15px;
+                            }
+
+                            .register-link p a {
+                                /* color: #fff; */
+                                text-decoration: none;
+                                font-weight: 600;
+                            }
+
+                            .register-link a {
+                                margin-left: 5px;
+                            }
+
+                                .register-link a:hover {
+                                text-decoration: underline;
+                            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <h1>Login</h1>
+            <div class="input-box">
+                @Html.TextBoxFor(model => model.Username, new { @class = "input", placeholder = "Username" })
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+            </div>
+            <div class="input-box">
+                @Html.PasswordFor(model => model.Password, new { @class = "input", placeholder = "Password" })
+                @Html.ValidationMessageFor(model => model.Password,"",new {@class = "text-danger"})
+            </div>
+            <div>
+                @Html.Raw(ViewBag.Error)
+            </div>
+            <input type="submit" value="Login" class="btnn" />
+            <div class="register-link">
+                <p>
+                    Don't have an account? <a href="@Url.Action("SignUp","Home")">Register</a>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
+}
